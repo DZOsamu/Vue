@@ -1,8 +1,8 @@
-import Vue from 'vue'   // 引入vue对象 类似于<script src="vue.js"></script>
-import App from './App.vue'   // 将App.vue文件里的对象引入过来 这是vue项目页面入口
+import Vue from 'vue'
+import App from './App.vue'
 
-Vue.config.productionTip = false   // 在控制台有一句提示消息
+Vue.config.productionTip = false
 
-new Vue({   // 开始实例化vue
-  render: h => h(App),   // 准备渲染App页面
-}).$mount('#app')   // 渲染到index.html文件里id叫app的标签上
+new Vue({
+  render: h => h(App),
+}).$mount('#app')
