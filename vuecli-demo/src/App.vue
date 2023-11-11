@@ -1,5 +1,5 @@
-
 <template>
+  <!-- 单vue文件 template里面只能有一个根标签 -->
   <div></div>   <!-- 根标签 -->
   <!-- <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
