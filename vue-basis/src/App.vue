@@ -28,6 +28,10 @@
       <!-- 想要同时阻止默认行为和事件冒泡 可以写成@click.prevent.stop -->
       <p @click.once="twoFn">点击观察事件处理函数执行几次</p>
       <!-- 事件处理函数只执行一次 但是每次点击 事件仍然执行 -->
+
+      <!-- v-on按键修饰符 -->
+      <input type="text" @keydown.enter="enterFn" />
+      <input type="text" @keydown.esc="escFn" />
     </div>
   </div>
 </template>
@@ -62,10 +66,10 @@ export default {
     },
 
     one(e) {
-      e.preventDefault();   // 阻止默认行为
+      e.preventDefault(); // 阻止默认行为
     },
     two(num, e) {
-      e.preventDefault();   // 阻止默认行为
+      e.preventDefault(); // 阻止默认行为
     },
 
     fatherFn() {
@@ -76,6 +80,13 @@ export default {
     },
     twoFn() {
       console.log("p标被点击了");
+    },
+
+    enterFn() {
+      console.log("用户按下了回车");
+    },
+    escFn() {
+      console.log("用户按下了返回");
     },
   },
 };
