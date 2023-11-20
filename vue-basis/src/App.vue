@@ -86,6 +86,25 @@
         <!-- 失去焦点时，把内容同步给v-model变量 -->
       </div>
     </div>
+
+    <!-- v-text 和 v-html -->
+    <div>
+      <p v-text="str"></p>
+      <p v-html="str"></p>
+      <p>{{ 10 + 20 }}</p>
+    </div>
+
+    <!-- v-show 和 v-if -->
+    <div>
+      <h1 v-show="isOk">我是h1标签</h1>
+      <h2 v-if="isOk">我是h2标签</h2>
+    </div>
+
+    <!-- v-if 和 v-else -->
+    <div>
+      <p v-if="age < 18">未成年</p>
+      <p v-else>成年了</p>
+    </div>
   </div>
 </template>
 
@@ -112,6 +131,8 @@ export default {
       age: 0,
       motto: "",
       introo: "",
+      str: "<span>我是一个span标签</span>",
+      isOk: true,
     };
   },
   methods: {
