@@ -20,6 +20,9 @@ export default {
   methods: {
     add() {
       this.arr.push(Math.floor(Math.random() * 20));
+      // floor(x) 对x进行下舍入，返回小于等于x的最大整数
+      // random() 返回0~1之间的随机数
+      // random()*20 返回0~20之间的随机数
     },
     del(index) {
       this.arr.splice(index, 1);
