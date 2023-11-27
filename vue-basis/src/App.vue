@@ -8,6 +8,7 @@
     <!-- v-bind指令 -->
     <a v-bind:href="url">点击</a>
     <img :src="imgUrl" />
+    <img :src="localImg" />
 
     <!-- v-on指令 -->
     <p>你要购买的商品数量：{{ count }}</p>
@@ -109,6 +110,7 @@
 </template>
 
 <script>
+import imgObj from "./assets/lanxiao.jpg"; // js需要导入图片文件，css和标签可以直接使用图片地址
 export default {
   // 变量在data函数return的对象上
   data() {
@@ -121,6 +123,7 @@ export default {
       url: "https://www.miyoushe.com/ys/",
       imgUrl:
         "https://uploadstatic.mihoyo.com/ys-obc/2021/12/24/79434666/c7bcb0952b0c6b6d7483dce9f6a3e9c1_2846214008406406765.png",
+      localImg: imgObj,
       count: 1,
       username: "123654",
       password: "",
