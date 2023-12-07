@@ -36,6 +36,14 @@
       <button @click="sliFn">截取前三个</button>
       <button @click="modFn">修改第一个</button>
     </div>
+
+    <!-- v-for更新性能 -->
+    <div>
+      <ul>
+        <li v-for="val in uparr" :key="val">{{ val }}</li>
+      </ul>
+      <button @click="btn">下标1位置插入新来的</button>
+    </div>
   </div>
 </template>
 
@@ -65,6 +73,7 @@ export default {
       },
       count: 10,
       array: [5, 1, 9, 3, 7],
+      uparr: ["老大", "老二", "老三"],
     };
   },
   methods: {
@@ -80,7 +89,10 @@ export default {
     modFn() {
       // 更新某个值 v-for检测不到 不更新
       // this.array[0] = 100;
-      this.$set(this.array, 0, 100);   // (修改对象,修改位置,修改内容)
+      this.$set(this.array, 0, 100); // (修改对象,修改位置,修改内容)
+    },
+    btn() {
+      this.uparr.splice(1, 0, "新来的");
     },
   },
 };
