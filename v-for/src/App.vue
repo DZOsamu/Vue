@@ -32,9 +32,9 @@
       <ul>
         <li v-for="item in array" :key="item">{{ item }}</li>
       </ul>
-      <button @click="revFn">翻转</button>
-      <button @click="sliFn">截取前三个</button>
-      <button @click="modFn">修改第一个</button>
+      <button @click="revFn">翻转</button>   <!-- 更新 -->
+      <button @click="sliFn">截取前三个</button>   <!-- 不更新 -->
+      <button @click="modFn">修改第一个</button>   <!-- 不更新 -->
     </div>
 
     <!-- v-for更新性能 -->
