@@ -89,7 +89,7 @@
 // 3-3.通过id，找到对应数据在数组中的下标
 // 3-4.用splice方法删除原数组中的对应元素
 // 3-5.设置tfoot，无数据时给出提示
-// 3-6.解决bug：数组无数据，id需要一个固定值
+// 3-6.无数据再新增id需要判断一下
 
 import "bootstrap/dist/css/bootstrap.css"; // 默认找文件夹下的index文件（这个不是，所以需要写路径）
 export default {
@@ -112,10 +112,13 @@ export default {
         alert("不能为空");
         return;
       }
+      //解决bug：数组无数据时，id需要一个固定值
+      let id = this.list.length > 0 ? this.list[this.list.length - 1].id + 1 : 100;
       // 2-3.把值以对象的形式插入list
       this.list.push({
         // 新对象的id值：当前数组最后一个对象的id + 1
-        id: this.list[this.list.length - 1].id + 1,
+        // id: this.list[this.list.length - 1].id + 1,
+        id: id,
         name: this.name,
         price: this.price,
         time: new Date(),
