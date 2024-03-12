@@ -15,14 +15,12 @@ export default {
       };
    },
    // 方式2：局部过滤器（只能在当前文件内使用）
-   /*
-      语法：
-      filters:{
-         过滤器名 (val) {
-            return 处理结果
-         }
+   /* 语法：
+   filters:{
+      过滤器名 (val) {
+         return 处理结果
       }
-   */
+   } */
    filters:{
       toUp(val){
          return val.toUpperCase()
