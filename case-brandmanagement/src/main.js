@@ -7,7 +7,10 @@ Vue.config.productionTip = false
 
 // 方式1：全局过滤器（在任意的.vue文件内可以直接使用）
 // 语法：Vue.filter("过滤器名",值 => 处理后结果)
-Vue.filter("reverse", val => val.split("").reverse().join(""))
+// Vue.filter("reverse", val => val.split("").reverse().join(""))
+
+// 过滤器接参数
+Vue.filter("reverse", (val, s) => { return val.split("").reverse().join(s) })
 
 new Vue({
   render: h => h(App),
