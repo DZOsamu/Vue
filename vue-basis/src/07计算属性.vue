@@ -1,31 +1,34 @@
 <template>
   <div>
     <p>{{ num }}</p>
+    <p>{{ reverseMessage }}</p>
+    <p>{{ reverseMessage }}</p>
+    <p>{{ getMessage() }}</p>
+    <p>{{ getMessage() }}</p>
   </div>
 </template>
-
 <script>
 export default {
   data() {
     return {
       a: 10,
       b: 20,
+      msg: "Hello,Vue",
     };
   },
-
-  // 计算属性：
-  // 场景：一个变量的值，需要用另外的变量计算得到
-  // 注意：计算属性也是vue变量，所以不能和data里的重名，用法和data相同
-  /*语法：
-    computed: {
-      计算属性名() {
-        return 值
-      }
-    }
-  */
+  methods: {
+    getMessage() {
+      console.log("函数执行了");
+      return this.msg.split("").reverse().join("");
+    },
+  },
   computed: {
     num() {
       return this.a + this.b;
+    },
+    reverseMessage() {
+      console.log("计算属性执行了");
+      return this.msg.split("").reverse().join("");
     },
   },
 };
