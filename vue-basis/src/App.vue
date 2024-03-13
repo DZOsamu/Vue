@@ -27,7 +27,8 @@
             <!-- 如果价格超过100 就有red这个类 -->
             <!-- <td class="red">{{ obj.price }}</td> -->
             <td :class="{ red: obj.price > 100 }">{{ obj.price }}</td>
-            <td>{{ obj.time }}</td>
+            <!-- 4-3.使用过滤器 -->
+            <td>{{ obj.time | formatDate }}</td>
             <td><a href="#" @click="delFn(obj.id)">删除</a></td>
           </tr>
         </tbody>
@@ -91,7 +92,15 @@
 // 3-5.设置tfoot，无数据时给出提示
 // 3-6.无数据再新增id需要判断一下
 
-import "bootstrap/dist/css/bootstrap.css"; // 默认找文件夹下的index文件（这个不是，所以需要写路径）
+// 4 处理时间
+// 4-1.下载moment模块
+// 4-2.定义过滤器，编写内部代码
+// 4-3.使用过滤器
+
+// import "bootstrap/dist/css/bootstrap.css"; // 默认找文件夹下的index文件（这个不是，所以需要写路径）
+
+import moment from "moment";
+
 export default {
   data() {
     return {
@@ -113,7 +122,8 @@ export default {
         return;
       }
       //解决bug：数组无数据时，id需要一个固定值
-      let id = this.list.length > 0 ? this.list[this.list.length - 1].id + 1 : 100;
+      let id =
+        this.list.length > 0 ? this.list[this.list.length - 1].id + 1 : 100;
       // 2-3.把值以对象的形式插入list
       this.list.push({
         // 新对象的id值：当前数组最后一个对象的id + 1
@@ -129,6 +139,12 @@ export default {
       let index = this.list.findIndex((obj) => obj.id === id);
       // 3-4.用splice方法删除原数组中的对应元素
       this.list.splice(index, 1);
+    },
+  },
+  // 4-2.定义过滤器，编写内部代码
+  filters: {
+    formatDate(val) {
+      return moment(val).format("YYYY-MM-DD");
     },
   },
 };
