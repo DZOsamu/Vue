@@ -26,7 +26,7 @@
 
             <!-- 如果价格超过100 就有red这个类 -->
             <!-- <td class="red">{{ obj.price }}</td> -->
-            <!-- <td :class="{ red: obj.price > 100 }">{{ obj.price }}</td> -->
+            <td :class="{ red: obj.price > 100 }">{{ obj.price }}</td>
             <!-- 4-3.使用过滤器 -->
             <td>{{ obj.time | formatDate }}</td>
             <td><a href="#" @click="delFn(obj.id)">删除</a></td>
