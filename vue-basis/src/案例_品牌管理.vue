@@ -26,12 +26,20 @@
 
             <!-- 如果价格超过100 就有red这个类 -->
             <!-- <td class="red">{{ obj.price }}</td> -->
-            <td :class="{ red: obj.price > 100 }">{{ obj.price }}</td>
+            <!-- <td :class="{ red: obj.price > 100 }">{{ obj.price }}</td> -->
             <!-- 4-3.使用过滤器 -->
             <td>{{ obj.time | formatDate }}</td>
             <td><a href="#" @click="delFn(obj.id)">删除</a></td>
           </tr>
+
+          <!-- 5-1.末尾补tr，显示总价和均价 -->
+          <tr style="background-color: #eee !important;">
+            <td>统计：</td>
+            <td colspan="2">总价钱为：{{ allPrice }}</td>
+            <td colspan="2">平均价：{{ avgPrice }}</td>
+          </tr>
         </tbody>
+
         <!-- 3-5.设置tfoot，无数据时给出提示 -->
         <tfoot v-show="list.length === 0">
           <tr>
@@ -97,6 +105,12 @@
 // 4-2.定义过滤器，编写内部代码
 // 4-3.使用过滤器
 
+// 5 总价均价显示
+// 5-1.末尾补tr，显示总价和均价
+// 5-2.定义计算属性
+// 5-3.求总价
+// 5-4.求均价
+
 // import "bootstrap/dist/css/bootstrap.css"; // 默认找文件夹下的index文件（这个不是，所以需要写路径）
 
 import moment from "moment";
@@ -145,6 +159,19 @@ export default {
   filters: {
     formatDate(val) {
       return moment(val).format("YYYY-MM-DD");
+    },
+  },
+  // 5-2.定义计算属性
+  computed: {
+    allPrice() {
+      // 5-3.求总价
+      return this.list.reduce((sum, obj) => (sum += obj.price), 0);
+    },
+    avgPrice() {
+      // 5-4.求均价
+      return this.allPrice / this.list.length;
+      // 保留两位小数
+      // return (this.allPrice / this.list.length).toFixed(2);
     },
   },
 };
